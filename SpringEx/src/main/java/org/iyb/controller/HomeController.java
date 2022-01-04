@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-    // 스프링에서 지원해주는 것(sysout)
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
