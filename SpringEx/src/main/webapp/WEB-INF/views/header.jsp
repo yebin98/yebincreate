@@ -11,7 +11,7 @@
                <li><a href="#">차용품</a></li>
                <li><a href="#">다과</a></li>
                <li><a href="#">테마샵</a></li>
-               <li><a href="./서브페이지/index.html">매거진</a></li>
+               <li><a href="resources/서브페이지/index.html">매거진</a></li>
            </ul>
        </div><!--.gnb-->
 

@@ -13,7 +13,7 @@
            <!-- 본문1 -->
     <div class="main1">
         <div class="msImg">
-            <a href="#"><img src="./img/tea_time1.jpg" alt=""></a>
+            <a href="#"><img src="resources/img/tea_time1.jpg"></a>
         </div><!--msImg-->
 
         <div class="msPager">
@@ -121,7 +121,7 @@
                 <li>
                     <div class="m3_item_box">
                         <p class="m3_ib_img">
-                            <a href=""><img src="./img/웨딩그린티 10입(피라미드).png" alt=""></a>
+                            <a href=""><img src="resources/img/웨딩그린티 10입(피라미드).png" alt=""></a>
                         </p>
                         <p class="m3_ib_name"><a href=""> 웨딩그린티 10입</a></p>
                         <p class="m3_ib_prise">15000원</p>
@@ -147,7 +147,7 @@
                 <li>
                     <div class="m3_item_box">
                         <p class="m3_ib_img">
-                            <a href=""><img src="./img/웨딩그린티 20입(피라미드).png" alt=""></a>
+                            <a href=""><img src="resources/img/웨딩그린티 20입(피라미드).png" alt=""></a>
                         </p>
                         <p class="m3_ib_name"><a href=""> 웨딩그린티 20입</a></p>
                         <p class="m3_ib_prise">23000원</p>
@@ -173,7 +173,7 @@
                 <li>
                     <div class="m3_item_box">
                         <p class="m3_ib_img">
-                            <a href=""><img src="./img/벛꽃향기가득한올레 10입(피라미드).png" alt=""></a>
+                            <a href=""><img src="resources/img/벛꽃향기가득한올레 10입(피라미드).png" alt=""></a>
                         </p>
                         <p class="m3_ib_name"><a href=""> 벛꽃향기가득한올레 10입</a></p>
                         <p class="m3_ib_prise">15000원</p>
@@ -199,7 +199,7 @@
                 <li>
                     <div class="m3_item_box">
                         <p class="m3_ib_img">
-                            <a href=""><img src="./img/산도롱 산딸기 10.png" alt=""></a>
+                            <a href=""><img src="resources/img/산도롱 산딸기 10.png" alt=""></a>
                         </p>
                         <p class="m3_ib_name"><a href="">산도롱 산딸기 10입</a></p>
                         <p class="m3_ib_prise">15000원</p>
@@ -241,7 +241,7 @@
                 <li>
                     <div class="m4_item_box">
                         <p class="m4_ib_img">
-                            <a href=""><img src="./img/제주얼그레이.png" alt=""></a>
+                            <a href=""><img src="resources/img/제주얼그레이.png" alt=""></a>
                         </p>
                         <p class="m4_ib_name"><a href=""> 제주 얼그레이 20입</a></p>
                         <p>
@@ -270,7 +270,7 @@
                 <li>
                     <div class="m4_item_box">
                         <p class="m4_ib_img">
-                            <a href=""><img src="./img/제주화산암차.png" alt=""></a>
+                            <a href=""><img src="resources/img/제주화산암차.png" alt=""></a>
                         </p>
                         <p class="m4_ib_name"><a href=""> 제주화산암차 10입</a></p>
                         <p>                                    
@@ -299,7 +299,7 @@
                 <li>
                     <div class="m4_item_box">
                         <p class="m4_ib_img">
-                            <a href=""><img src="./img/달빛걷기.png" alt=""></a>
+                            <a href=""><img src="resources/img/달빛걷기.png" alt=""></a>
                         </p>
                         <p class="m4_ib_name"><a href=""> 달빛걷기 10입</a></p>
                         <p>                                    
@@ -328,7 +328,7 @@
                 <li>
                     <div class="m4_item_box">
                         <p class="m4_ib_img">
-                            <a href=""><img src="./img/삼다연.png" alt=""></a>
+                            <a href=""><img src="resources/img/삼다연.png" alt=""></a>
                         </p>
                         <p class="m4_ib_name"><a href="">삼다연 10입</a></p>
                         <p>

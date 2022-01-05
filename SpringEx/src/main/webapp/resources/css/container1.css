@@ -1,0 +1,760 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 20px;
+    line-height: 20px;
+    color: #333;
+}
+
+ul, ol{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+
+.wrap{
+    min-width: 1240px;
+    background-color: #fff;
+}
+
+.header{
+    width: 100%;
+    height: 180px;
+    margin-bottom: 100px;
+    background-color: rgb(232, 241, 237);
+}
+
+.headerIn{
+    position: relative;
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.logo a{
+    display: block;
+    width: 160px;
+    height: 160px;
+    background-image: url(../img/오설록\ 로고.png);
+    background-position: left -120px top -90px;
+    background-repeat: no-repeat;
+    background-size: 240% ;
+    text-indent: -999999px;
+
+}
+
+.gnb{
+    position: absolute;
+    bottom: 20px;
+    left: 220px;
+}
+
+.gnb ul{
+    display: flex;
+}
+
+.gnb li{
+    margin-right: 60px;
+}
+
+.gnb li a{
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 40px;
+    color: #222;
+}
+
+.gnb li a:hover{
+    color: rgb(78, 156, 78);
+    font-weight: bolder;
+}
+
+.member{
+    position: absolute;
+    top: 20px;
+    right: 0px;
+}
+
+.member ul{
+    display: flex;
+}
+
+.member li{
+    margin-left: 40px;
+}
+
+.member li a{
+    font-size:22px;
+    line-height: 30px;
+    font-weight: 500;
+    color: #222;
+}
+
+.member li a:hover{
+    color: rgb(78, 156, 78);
+    font-weight: bolder;
+}
+
+.search{
+    display: flex;
+}
+
+.search input{
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    width: 280px;
+    height: 30px;
+    padding: 3px 13px;
+    font-size: 17px;
+    font-weight: 700;
+    border: 2px solid #9ac4a1;
+    border-radius: 20px;
+    background-color: #e7f1e9;
+}
+
+.search a{
+    display: block;
+    position: absolute;
+    bottom: 25px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/icon_search1.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center ;
+    text-indent: -99999px;
+}
+
+/* 본문 시작 */
+
+#container{
+    position: relative;
+    width: 100%;
+}
+
+/* 본문 1 */
+
+.main1{
+    position: relative;
+    width: 1200px;
+    height: 700px;
+    margin: 0 auto 100px auto;
+    overflow: hidden;
+}
+
+.msImg{
+    position: absolute;
+    left: 230px;
+    bottom: 0;
+    height: 700px;
+}
+
+.msImg img{
+    height: 100%;
+    object-fit: cover;
+}
+
+.msPager{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.msPager li{
+    margin: 0  0 20px 0;
+}
+
+.msPager li a{
+    display: block;
+    width: 200px;
+    height: 124px;
+    background-color: #f4faf5;
+    color: #222;
+    padding-top: 28px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 26px;
+    line-height: 30px;
+}
+
+.msPager .on a{
+    background-color: #cbe0c2;
+}
+
+/* 본문 2 */
+
+.main2{
+    width: 1200px;
+    margin: 0 auto 100px auto;
+    background-attachment: fixed;
+}
+
+.main2 h2{
+    padding-bottom: 30px;
+    font-size: 30px;
+    color: #555;
+    text-align: center;
+}
+
+.main2 ul{
+    display: flex;
+    justify-content: space-between;
+}
+  
+.main2 li{
+    position: relative;
+    width: 200px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+  
+.main2 li a{
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    transition: transform 1s;
+}
+  
+.main2 li:hover a{
+    transform: scale(1.2);
+    transition: transform 2s;
+}
+  
+.main2 .tea1 a{
+    background-image: url(../img/명차1.png);
+}
+  
+.main2 .tea2 a{
+    background-image: url(../img/녹차.png);
+}
+  
+.main2 .tea3 a{
+    background-image: url(../img/건강차\ 동그라미.png);
+}
+  
+.main2 .tea4 a{
+    background-image: url(../img/꽃.과일차.png);
+}
+  
+.main2 a .over{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    background-color: rgba(203, 224, 194, 0.9);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: none;
+}
+
+.main2 a:hover .over{
+    display: block;
+}
+  
+.main2 .over span{
+    display: block;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 100%;
+    color: #555;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.main3, .main4{
+    width: 1200px;
+    margin: 0 auto 100px auto;
+}
+
+.m3_title, .m4_title{
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.m3_title a, .m4_title a{
+    display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+    color: #333;
+}
+
+.taste{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.taste .t_kind, .taste .t_scent, .taste .t_product{
+    width: 120px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid #9ac4a1;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #111;
+    font-size: 16px;
+}
+
+.checkbox{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+  
+.color{
+    position: relative;
+    padding: 15px 20px 18px 20px;
+    margin: 8px;
+}
+  
+input[type="checkbox"]{
+    display: none;
+}
+
+label{
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-indent: -99999999999px;
+}
+  
+label::before{
+    content: "";
+    position: absolute;
+    top: 22px;
+    left: -6px;
+    width: 16px;
+    height: 16px;
+    background-color: #aaa;
+    border-radius: 50%;
+    background-position: center;
+    background-size: 20px auto;
+    background-repeat: no-repeat;
+    transform: scale(0);
+    transition: all 0.3s;
+}
+  
+input[type="checkbox"]:checked + label::before{
+    transform: scale(1);
+}
+
+label::after{
+    content: "";
+    border: 2px solid #666;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    left: -10px;
+    top: 18px;
+}
+
+.color_red{
+    background-color: #faddd9;
+}
+  
+.color_orange{
+    background-color: #ffecd9;
+}
+  
+.color_yellow{
+    background-color: #fafad1;
+}
+  
+.color_green{
+    background-color: #dbe9d3;
+}
+  
+.color_blue{
+    background-color: #dbe0f1;
+}
+  
+.color_purple{
+    background-color: #e2d1e6;
+}
+
+.m3_item ul, .m4_item ul{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+.m3_item li, .m4_item li{
+    width: 24%;
+    height: auto;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.m3_item li:hover, .m4_item li:hover{
+    background-color: rgba(203, 224, 194, 0.2);
+    border-radius: 10px;
+}
+
+.m3_item .m3_item_box, .m4_item .m4_item_box{
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.m3_item_box .m3_ib_img a img, .m4_item_box .m4_ib_img a img{
+    width: 100%;
+    height: 283px;
+}
+
+.m3_item_box .m3_ib_name, .m4_item_box .m4_ib_name{
+    height: 50px;
+}
+
+.m3_item_box .m3_ib_name a, .m4_item_box .m4_ib_name a{
+    padding: 5px 0;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 50px;
+    color: #333;
+}
+
+.m3_item_box .m3_ib_prise, .m4_item_box .m4_ib_prise{
+    height: 30px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.num_cart form{
+    display: flex;
+    justify-content: center;
+    color: #333;   
+}
+
+.num_cart select{
+    width: 100px;
+    height: 40px;
+    padding: 0 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #9ac4a1;
+}
+
+.num_cart form input{
+    width: 100px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #9ac4a1;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.main3_a, .main4_a{
+    position: relative;
+}
+
+.main3_l, .main4_l{
+    position: absolute;
+    bottom: 200px;
+    left: 0;
+}
+
+.main3_l a, .main4_l a{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-left: 5px solid #888;
+    border-bottom: 5px solid #888;
+    text-indent: -9999999px;
+    transform: rotate(45deg);
+}
+
+.main3_r, .main4_r{
+    position: absolute;
+    bottom: 200px;
+    right: 0;
+}
+
+.main3_r a, .main4_r a{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-right: 5px solid #888;
+    border-top: 5px solid #888;
+    text-indent: -9999999px;
+    transform: rotate(45deg);
+}
+
+.main4 .m4_ib_prise_d{
+    height: 30px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.m4_item_box .m4_ib_prise{
+    margin-bottom: 10px;
+    text-decoration: line-through;
+    color: #888;
+    font-weight: 500;
+}
+
+/* footer */
+
+.footerIn_1{
+    width: 100%;
+    background-color: rgb(252, 244, 235);
+}
+
+.f1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.ask{
+    width: 350px;
+}
+
+.ask h3{
+    margin-bottom: 8px;
+    font-size: 22px;
+    line-height: 30px;
+    text-align: center;
+    color: #555;
+}
+
+.ask li{
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+    color: #666;
+}
+
+.ask li p{
+    color: #666;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.account{
+    width: 350px;
+    text-align: center;
+}
+
+.account1{
+    margin-bottom: 10px;
+}
+
+.account1 h3, .account2 h3{
+    margin-bottom: 8px;
+    font-size: 22px;
+    line-height: 30px;
+    color: #555;
+}
+
+.account1 p, .account2 p{
+    font-size: 18px;
+    line-height: 30px;
+    color: #666;
+}
+
+.account1 .bank{
+    font-size: 14px;
+}
+
+.account2 p a span{
+    display: inline-block;
+    color: #666;
+    padding-left: 30px;
+    background-image: url(../img/ico-sns-plus-80\ grayver.png);
+    background-repeat: no-repeat;
+    background-size: 20px auto;
+    background-position: left center;
+}
+
+.sns{
+    width: 350px;
+}
+
+.sns li{
+    padding: 10px 0;
+}
+
+.sns li a{
+    width: 200px;
+    margin-left: 100px;
+    color: #666;
+    font-size: 22px;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: 28px auto;
+    background-position: left 12px center;
+}
+
+.sns .sns1 a{
+    background-image: url(../img/sns_insta.png);
+}
+
+.sns .sns2 a{
+    background-image: url(../img/sns_facebook.png);
+}
+
+.sns .sns3 a{
+    background-image: url(../img/sns_youtube.png);
+}
+
+.footerIn_2{
+    width: 100%; 
+    background-color: rgb(232, 241, 237);
+}
+
+.f2{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+.f_info ul{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px 0 5px 180px;
+}
+
+.f_info li{
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.f_info li a{
+    color: #555;
+    font-size: 13px;
+}
+
+.f_info li a::after{
+    content: "";
+    display: inline-block;
+    vertical-align: top;
+    width: 1px;
+    height: 12px;
+    margin: 6px 10px 0 10px;
+    background-color: #555;
+}
+
+.f_info li:last-child a::after{
+    display: none;
+}
+
+.fwrite{
+    display: flex;
+    justify-content: space-between;
+}
+
+.flogo{
+    width: 160px;
+    height: 100px;
+    background-image: url(../img/오설록\ 로고.png);
+    background-size: 200% auto;
+    background-position: top -100px center;
+    text-indent: -9999px;
+}
+
+.fwrite1{
+    margin-right: 90px;
+    font-size: 13px;
+    line-height: 25px;
+    color: #555;
+}
+
+.fwrite1 span a{
+    font-size: 13px;
+    line-height: 25px;
+    font-weight: 700;
+    color: #555;
+}
+
+.inisis h4{
+    font-size: 15px;
+    margin-bottom: 20px;
+    line-height: 25px;
+    font-weight: border;
+    color: #666;
+}
+
+.inisis .in_b{
+    display: flex;
+}
+
+.inisis .in_photo{
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    text-indent: -9999999999px;
+    background-image: url(../img/inisis\ logo.PNG);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px auto;
+}
+
+.inisis p{
+    font-size: 13px;
+    line-height: 25px;
+    color: #666;
+}
+
+.top a{
+    width: 70px;
+    height: 70px;
+    background-color: #ccc;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50%;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    padding-top: 27px;
+    box-sizing: border-box;
+    text-align: center;
+    transition: 0.5s;
+    font-size: 20px;
+}
+
+.top a:focus{
+    outline: 0;
+}
+
+.top a:hover{
+    background-color: #9ac4a1;
+    cursor: pointer;
+    box-shadow: 0 2px 4px #9ac4a1;
+}
