@@ -1,5 +1,5 @@
 package org.iyb.domain;
-
+//데이터 베이스 insert할 그릇
 public class BoardDTO{
 	private int bno;
 	private String title;

@@ -1,24 +1,53 @@
 package org.iyb.controller;
 
 import org.iyb.domain.BoardDTO;
+import org.iyb.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+@Controller // 컨트롤러 역활 부여
 @RequestMapping("board")
 public class BoardController {
+	@Autowired
+	//private BoardService service = new BoardController;
+	private BoardService service;//BoardService와 연결
+	
+	//글쓰기 화면으로
 	@GetMapping("write")
+	//url 주소를 입력해 게시판 글쓰기 화면이 뜬다.
 	public void write() {
 		System.out.println("board/write");
 	}
+	//글쓰기 버튼을 클릭하면
 	@PostMapping("write")
-	public void writePost(BoardDTO board) {
+	//submit 버튼을 누르면 데이터를 저장한다.
+	public String writePost(BoardDTO board) {
+		service.write(board);//BoardService와 연결//호출부
 		System.out.println("write post"+board);
-		
+		//return "board/list"; //이렇게 작성하면 db, 서비스 하나도 안거치고 온다.
+		return "redirect:/board/list";//return은 @GetMapping의 값 작성하면 된다.
 	}
+	
 	//@GetMapping("write")
 	//@PostMapping("write")
 	//다른 방식이기 때문에 같은 단어 사용 가능
+	
+	//게시판 목록 리스트
+	@GetMapping("list")
+	public void list(Model model) {//사용자에게 받을 것이 없기 때문에
+		service.list();
+		System.out.println("board/list");
+		System.out.println("list결과는="+service.list());
+		model.addAttribute("list", service.list());
+	}
+	
+	//게시판 목록 리스트에서 제목을 클릭하면
+	@GetMapping("detail")
+	public void detail(BoardDTO board, Model model) {
+		model.addAttribute("detail", service.detail(board));
+	}
 }
