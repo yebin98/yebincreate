@@ -1,6 +1,8 @@
 package org.iyb.controller;
 
 import org.iyb.domain.BoardDTO;
+import org.iyb.domain.Criteria;
+import org.iyb.domain.PageDTO;
 import org.iyb.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,11 +41,15 @@ public class BoardController {
 	
 	//게시판 목록 리스트
 	@GetMapping("list")
-	public void list(Model model) {//사용자에게 받을 것이 없기 때문에
-		service.list();
+	public void list(Criteria cri, Model model) {//사용자에게 받을 것이 없기 때문에
+		//검색기능은 따로 데이터를 만드는 것이 없기 때문에 변수로 작성
+		//BoardDTO에search와 keyword를 작성하거나, 다른 도메인을 만들면 된다.
+		//db작업할 때 필요가 없기 때문에 다른 도메인을 만드는 것이 좋다.
+		//service.list(cri);
 		System.out.println("board/list");
-		System.out.println("list결과는="+service.list());
-		model.addAttribute("list", service.list());
+		System.out.println("list결과는="+service.list(cri));
+		model.addAttribute("list", service.list(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri,97));//매개변수가 2개 이므로
 	}
 	
 	//게시판 목록 리스트에서 제목을 클릭하면

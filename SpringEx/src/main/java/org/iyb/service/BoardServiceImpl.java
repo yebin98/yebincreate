@@ -1,12 +1,12 @@
 package org.iyb.service;
 
 import java.util.ArrayList;
-
 import org.iyb.domain.BoardDTO;
-
+import org.iyb.domain.Criteria;
 import org.iyb.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service // 서비스 역활 부여
 public class BoardServiceImpl implements BoardService{ 
@@ -21,13 +21,16 @@ public class BoardServiceImpl implements BoardService{
 	//호출하면 연결됨
 	
 	//게시판 목록리스트 설계된 것 구현
-	public ArrayList<BoardDTO> list() {
-		return bmapper.list();
+	public ArrayList<BoardDTO> list(Criteria cri) {
+		return bmapper.list(cri);
 		//return필수! : 호출한 곳으로 보냄
 	}
-	
+	@Transactional
 	//게시판 목록리스트에서 제목을 클릭했을 때 내용이 나오는 상세페이지 설계된 것을 구현
 	public BoardDTO detail(BoardDTO board) {
+		//board테이블에 조회수 속성에 +1
+		bmapper.cntupdate(board);
+		//		상세페이지 select
 		return bmapper.detail(board);
 	}
 	

@@ -31,7 +31,7 @@
 	                </tr>
 	            </thead>
 	            <tbody>
-	            	<c:forEach items="${list}" var="board">
+	            	<c:forEach items="${list}" var="board"><!-- items=배열길이만큼 반복해라 -->
 	            	<!-- for문과 비슷 -->
 	            		<tr>
 		                    <td>${board.bno}</td>
@@ -44,6 +44,29 @@
 	            	</c:forEach>
 	            </tbody>
 	        </table>
+		    <form action="" method="get">
+		        <div class="form-control bg-light border-0 small" style="height:50px">
+		            <select name="search" id="">
+	              		<option value="t">제목</option>
+	              		<option value="c">내용</option>
+	              		<option value="w">작성자</option>
+	             		<option value="tc">제목 + 내용</option>
+	              		<option value="tcw">제목 + 내용 + 작성자</option>
+		          	</select>
+		          	<input type="text" name="keyword">
+		          	<input type="submit" value="검색" class="btn btn-primary">
+		        </div>
+		        <div>
+		        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}"><!-- var = 변수명 -->
+		        		<ul>
+		        			<li>${num}</li>
+		        		</ul>
+		        	</c:forEach>
+		        	  <!-- for(int i=1; i<=10; i++{
+		        					System.out.println(i)
+		        			}-->
+		        </div>
+		    </form>
 	    </div>
 	</div>           
 </body>
