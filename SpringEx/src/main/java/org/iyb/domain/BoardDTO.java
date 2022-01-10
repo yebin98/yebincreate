@@ -56,5 +56,4 @@ public class BoardDTO{
 		return "BoardDTO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer
 				+ ", regdate=" + regdate + ", cnt=" + cnt + ", good=" + good + "]";
 	}
-	
 }
