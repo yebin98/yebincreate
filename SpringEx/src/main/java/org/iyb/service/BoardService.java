@@ -15,4 +15,6 @@ public interface BoardService {
 	public void modify(BoardDTO board);
 	//게시판 삭제페이지
 	public void remove(BoardDTO board);
+	//게사판 페이징에 쓰일 데이터건수
+	public int getTotalCount(Criteria cri);
 }

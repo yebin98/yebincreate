@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@Controller // 컨트롤러 역활 부여
+@Controller // mvc컨트롤러(c) 역활 부여
 @RequestMapping("board")
 public class BoardController {
 	@Autowired
@@ -45,11 +45,13 @@ public class BoardController {
 		//검색기능은 따로 데이터를 만드는 것이 없기 때문에 변수로 작성
 		//BoardDTO에search와 keyword를 작성하거나, 다른 도메인을 만들면 된다.
 		//db작업할 때 필요가 없기 때문에 다른 도메인을 만드는 것이 좋다.
-		//service.list(cri);
 		System.out.println("board/list");
-		System.out.println("list결과는="+service.list(cri));
+		//System.out.println("list결과는="+service.list(cri));
 		model.addAttribute("list", service.list(cri));
-		model.addAttribute("pageMaker", new PageDTO(cri,97));//매개변수가 2개 이므로
+		
+		int total = service.getTotalCount(cri);
+		//System.out.println("total="+ total);
+		model.addAttribute("pageMaker", new PageDTO(cri,total));//매개변수가 2개 이므로 select된 결과 도출
 	}
 	
 	//게시판 목록 리스트에서 제목을 클릭하면

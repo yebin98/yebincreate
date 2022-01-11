@@ -16,7 +16,7 @@ public class PageDTO {
 		this.startPage = endPage-9;//10-9=1, 20-9=11..... endPage가 변수에 없어 구분이 되기 때문에 this를 안 불여도 된다.
 		//전체건수를 고려한 endPage->realEnd
 		//(int)(Math.ceil(전체건수*1.0))/10; 1.0 : 소숫점까지 계산되기 위하여
-		int realEnd=(int)(Math.ceil((total*10)/cri.getAmount()));
+		int realEnd=(int)(Math.ceil((total*1.0)/cri.getAmount()));
 		//realEnd < endPage => realEnd값을 endPage에 저장
 		if(realEnd<endPage) {
 			this.endPage=realEnd;

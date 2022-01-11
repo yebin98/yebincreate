@@ -11,9 +11,9 @@
 	<link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link rel = "stylesheet" type="text/css" href="../resources/css/dataTable.bootstrap4.css">
 	<link rel = "stylesheet" type="text/css" href="../resources/css/sb-admin-2.css">
-	<!-- <script type="text/javascript" src="resources/js/write.js"></script> -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="../resources/js/list.js"></script>
 </head>
 <body>
 	<h1>게시판 목록 리스트</h1>
@@ -44,30 +44,48 @@
 	            	</c:forEach>
 	            </tbody>
 	        </table>
-		    <form action="" method="get">
+		    <form id="actionForm" action="/board/list" method="get">
 		        <div class="form-control bg-light border-0 small" style="height:50px">
-		            <select name="search" id="">
-	              		<option value="t">제목</option>
-	              		<option value="c">내용</option>
-	              		<option value="w">작성자</option>
-	             		<option value="tc">제목 + 내용</option>
-	              		<option value="tcw">제목 + 내용 + 작성자</option>
+		        	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+		        	<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+				<%-- <input type="text" name="search" value="${pageMaker.cri.search}">
+		        	<input type="text" name="keyword" value="${pageMaker.cri.keyword}"> --%>
+		            <select name="search" id="search">
+	              		<option value="t" id="t">제목</option>
+	              		<option value="c" id="c">내용</option>
+	              		<option value="w" id="w">작성자</option>
+	             		<option value="tc" id="tc">제목 + 내용</option>
+	              		<option value="tcw" id="tcw">제목 + 내용 + 작성자</option>
 		          	</select>
-		          	<input type="text" name="keyword">
+		          	<input type="text" name="keyword" value="${pageMaker.cri.keyword}">
 		          	<input type="submit" value="검색" class="btn btn-primary">
 		        </div>
-		        <div>
-		        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}"><!-- var = 변수명 -->
-		        		<ul>
-		        			<li>${num}</li>
-		        		</ul>
-		        	</c:forEach>
+		        <div class="col-sm-12 col-md-7 dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+		        	<ul class="pagination">
+		        		<c:if test="${pageMaker.prev}">
+		        			<li class="paginate_button page-item previous" id="dataTable_previous">
+			        			<a href="${pageMaker.startPage-1}" class="page-link">prev</a>
+			        		</li>
+		        		</c:if>
+			        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}"><!-- var = 변수명 -->
+			        		<li class="paginate_button page-item ">
+			        			<a href="${num}" class="page-link">${num}</a>
+			        			<!-- <a href="/board/list?pageNum=${num}&amount=${pageMaker.cri.amount}" class="page-link">${num}</a> -->
+			        		</li>
+			        	</c:forEach>
+			        	<c:if test="${pageMaker.next}">
+		        			<li class="paginate_button page-item next" id="dataTable_next">
+				        		<a href="${pageMaker.endPage+1}" class="page-link">next</a>
+				        	</li>
+		        		</c:if>
+		        	</ul>
 		        	  <!-- for(int i=1; i<=10; i++{
 		        					System.out.println(i)
 		        			}-->
 		        </div>
 		    </form>
 	    </div>
-	</div>           
+	</div>
+	
 </body>
 </html>

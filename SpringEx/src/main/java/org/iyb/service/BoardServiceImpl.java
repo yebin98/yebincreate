@@ -40,7 +40,13 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	//게시판 글삭제 설계된 것 구현
-		public void remove(BoardDTO board) {
-			bmapper.remove(board);
-		}
+	public void remove(BoardDTO board) {
+		bmapper.remove(board);
+	}
+	
+	//게사판 페이징에 쓰일 데이터건수
+	public int getTotalCount(Criteria cri) {
+		return bmapper.getTotalCount(cri);
+	}
+		
 }
