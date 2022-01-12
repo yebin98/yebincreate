@@ -2,12 +2,13 @@
  * 폼테그의 serch와 keyword를 가지고 와라 
  */
 $(document).ready(function(){
-	var actionForm = $("#actionForm")
+	let actionForm = $("#actionForm")
 	// 현재페이지 번호를 클릭하면
 	$(".paginate_button a").on("click",function(e){//$("a")로 작성하면 a태그 전부가 선택된다
 		//alert("aaa")
 		e.preventDefault();
 		actionForm.find("input[name='pageNum']").val($(this).attr("href"))// form태그 안에 있는 pageNum 값을 가지고 와라
+		// actionForm.find("select[name='search']").val($(this).attr("selected"))
 		// actionForm.find("input[name='pageNum']") = <input type="text" name="pageNum" value="${pageMaker.cri.pageNum}"> 
 		// val  = ${pageMaker.cri.pageNum}
 		// attr("href") = 내가 선택한 값을 ${num}에 넣어라
@@ -21,6 +22,11 @@ $(document).ready(function(){
 		actionForm.find("input[name='pageNum']").val("1")
 		actionForm.submit();
 	})
+	
+//	$(".btn btn-primary").on("click",function(){
+//		actionForm.find("select[name='search']").val($(this).attr("selected"))
+//		actionForm.submit();
+//	})
 	
 //	let search = $("#search")
 //

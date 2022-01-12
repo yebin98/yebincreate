@@ -28,7 +28,7 @@ public class BoardController {
 	//글쓰기 버튼을 클릭하면
 	@PostMapping("write")
 	//submit 버튼을 누르면 데이터를 저장한다.
-	public String writePost(BoardDTO board) {
+	public String writePost(BoardDTO board) {//BoardDTO, Criteria : 객체타입 -> 받아서 처리
 		service.write(board);//BoardService와 연결//호출부
 		System.out.println("write post"+board);
 		//return "board/list"; //이렇게 작성하면 db, 서비스 하나도 안거치고 온다.
@@ -52,6 +52,7 @@ public class BoardController {
 		int total = service.getTotalCount(cri);
 		//System.out.println("total="+ total);
 		model.addAttribute("pageMaker", new PageDTO(cri,total));//매개변수가 2개 이므로 select된 결과 도출
+		//model.addAttribute("search",service.list(cri));
 	}
 	
 	//게시판 목록 리스트에서 제목을 클릭하면
