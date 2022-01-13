@@ -51,11 +51,11 @@
 				<%-- <input type="text" name="search" value="${pageMaker.cri.search}">
 		        	<input type="text" name="keyword" value="${pageMaker.cri.keyword}"> --%>
 		            <select name="search" id="search">
-	              		<option value="t" id="t" <%-- <c:if test="${search==t}"> selected </c:if> --%>>제목</option>
-	              		<option value="c" id="c" <%-- <c:if test="${search==c}"> selected </c:if> --%>>내용</option>
-	              		<option value="w" id="w" <%-- <c:if test="${search==w}"> selected </c:if> --%>>작성자</option>
-	             		<option value="tc" id="tc" <%-- <c:if test="${search==tc}"> selected </c:if> --%>>제목 + 내용</option>
-	              		<option value="tcw" id="tcw" <%-- <c:if test="${search==tcw}"> selected </c:if> --%>>제목 + 내용 + 작성자</option>
+	              		<option value="t" id="t"  <c:if test="${pageMaker.cri.search=='t'}"> selected </c:if> >제목</option>
+	              		<option value="c" id="c"  <c:if test="${pageMaker.cri.search=='c'}"> selected </c:if> >내용</option>
+	              		<option value="w" id="w"  <c:if test="${pageMaker.cri.search=='w'}"> selected </c:if> >작성자</option>
+	             		<option value="tc" id="tc"  <c:if test="${pageMaker.cri.search=='tc'}"> selected </c:if> >제목 + 내용</option>
+	              		<option value="tcw" id="tcw"  <c:if test="${pageMaker.cri.search=='tcw'}" >selected </c:if> >제목 + 내용 + 작성자</option>
 		          	</select>
 		          	<input type="text" name="keyword" value="${pageMaker.cri.keyword}">
 		          	<input type="submit" value="검색" class="btn btn-primary">

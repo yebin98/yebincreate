@@ -8,4 +8,13 @@
 		insert into reply(bno,reply,replyer)
 		values(#{bno},#{reply},#{replyer})
 	</insert>
+	<!-- select는 resulType이 있지만  insesrt는 0,1로 값이 이동한다. -->
+	
+	<select id="list" resultType="org.iyb.domain.ReplyDTO">
+	<!-- resultType="값을 보내고 받을 페키지+클래스경로" -->
+		select*from reply where bno=#{bno}
+	</select>
+	<select id="detail" resultType="org.iyb.domain.ReplyDTO">
+		select*from reply where rno=#{rno}
+	</select>
 </mapper>

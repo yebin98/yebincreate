@@ -25,10 +25,9 @@
 </head>
 <body>
 	<div class="form-group row">
-		<div id="bno" class="col-sm-12 mb-3 mb-sm-0">
-			<%-- <input type="text" id="aaa" value="${detail.bno}"> --%>
-	    	${detail.bno}
-	    </div><!-- BoardMapper의sql문장의 id값이 detail인 bno -->
+		<div id="bno" class="col-sm-12 mb-3 mb-sm-0">${detail.bno}</div> <!-- BoardMapper의sql문장의 id값이 detail인 bno -->
+	    <!-- 위에식은 아래처럼 탭키를 눌러서 하면  detail.js에 탭을 누른 값도 포함하여서 탭을 누르지말고 일자로 작성해야 한다. -->
+	    <%-- <input type="text" id="aaa" value="${detail.bno}"> --%>
 	    <div class="col-sm-12 mb-3 mb-sm-0">
 	    	${detail.title}
 	    </div><!-- name="" : 서버에 데이터 연결, model과 연결 -->
@@ -43,6 +42,11 @@
 	    	<button class="btn btn-primary btn-lg" id="addReplyBtn" data-toggle="modal" data-target="#myModal">
                	댓글 쓰기
             </button>
+            
+            <div >
+            	<ul id="relist"></ul>
+            </div><!-- js에.Html()을 사용할 경우 적용이 안되면 탭 사용하면 안 된다. -->
+            
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	             <div class="modal-dialog">
 	                 <div class="modal-content">
@@ -62,8 +66,8 @@
 	                     </div>
 	                     <div class="modal-footer">
 	                     	<button type="button" class="btn btn-primary" id="modalRegisterBtn">댓글쓰기</button>
-	                     	<button type="button" class="btn btn-primary" id="">댓글수정</button>
-	                     	<button type="button" class="btn btn-primary" id="">댓글삭제</button>
+	                     	<button type="button" class="btn btn-primary" id="modalModBtn">댓글수정</button>
+	                     	<button type="button" class="btn btn-primary" id="modalRemoveBtn">댓글삭제</button>
 	                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	                     </div>
 	                 </div><!-- /.modal-content -->
