@@ -55,13 +55,16 @@
 	                         <h4 class="modal-title" id="myModalLabel">댓글</h4>
 	                     </div>
 	                     <div class="modal-body">
+	                     	<div>
+	                         	<input type="hidden" name="rno" class="form-control">
+	                         </div>
 	                         <div>
 	                         	<label>Replyer</label>
-	                         	<input type="text" name="replyer">
+	                         	<input type="text" name="replyer" class="form-control">
 	                         </div>
 	                         <div>
 	                         	<label>Reply</label>
-	                         	<input type="text" name="reply">
+	                         	<input type="text" name="reply" class="form-control">
 	                         </div>
 	                     </div>
 	                     <div class="modal-footer">

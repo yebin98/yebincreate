@@ -43,14 +43,56 @@ let replyService=(function(){//replyService 함수 선언
 			})
 	}
 	
+	//댓글 수정을 하기 위한 함수 선언
+	function reupdate(reply,callback){
+		$.ajax({
+			url:"/replies/update",
+			type:"put",
+			data:JSON.stringify(reply),
+			contentType:"application/json;charset=utf-8",
+			success:function(result){//통신이 정상적으로 성공했으면 //실제로는 result가 움직이므로
+				//callback함수 선언
+				//만약 callback이 있으면
+				if(callback)
+				//callback함수를 호출
+					callback(result);//위의 add로 간다.
+			},
+			error:function(){//통신이 비정상적으로 처리가 되어 error가 있으면
+			}
+		})
+	}
+	
 	//댓글 삭제를 하기 위한 함수 선언
+	function remove(reply,callback){
+		$.ajax({
+			url:"/replies/remove",
+			type:"delete",
+			data:JSON.stringify(reply),
+			contentType:"application/json;charset=utf-8",
+			success:function(result){//통신이 정상적으로 성공했으면 //실제로는 result가 움직이므로
+				//callback함수 선언
+				//만약 callback이 있으면
+				if(callback)
+				//callback함수를 호출
+					callback(result);//위의 add로 간다.
+			},
+			error:function(){//통신이 비정상적으로 처리가 되어 error가 있으면
+			}
+		})
+	}
+	
+	
 	//return {name:"AAAA"};
-	return {
+	return {//메모리 관리를 위해서 작성
 		add:add,//add라는 함수를 add변수에 담아 움직이겠다.
 		getList:getList,//getList라는 함수를 getList변수에 담아 움직이겠다.
-		reDetail:reDetail
+		reDetail:reDetail,
+		reupdate:reupdate,
+		remove:remove
 	};
 })()//익명함수
+
+//=======================================================================================================
 
 $(document).ready(function(){
 //	// 상세페이지가 실행되면 댓글 글쓰기 버튼 활성화
@@ -59,6 +101,7 @@ $(document).ready(function(){
 //	$("#modalModBtn").show();
 //	// 상세페이지가 실행되면 댓글 삭제 버튼 활성화
 //	$("#modalRemoveBtn").show();
+
 	
 	// 댓글쓰기 버튼을 클릭하면
 	$("#addReplyBtn").on("click",function(){
@@ -66,7 +109,10 @@ $(document).ready(function(){
 		//모달창을 띄워라
 		$(".modal fade").modal("show");
 		//$(".modal").Modal("show");
-		
+		//Replyer input 내용 초기화
+		$("input[name='replyer']").val("")
+		//Reply input 내용 초기화
+		$("input[name='reply']").val("")
 		// 상세페이지가 실행되면 댓글 글쓰기 버튼 활성화
 		$("#modalRegisterBtn").show();
 		// 댓글 수정 버튼 비활성화
@@ -105,7 +151,7 @@ $(document).ready(function(){
 			
 			let str="";
 			for(let i=0; i<list.length; i++){
-				str+="<li><div><b>"+list[i].replyer+"</b></div>"
+				str+="<li data-rno='"+list[i].rno+ "'><div><b>"+list[i].replyer+"</b></div>"
 				str+=" "+list[i].reply+"</div>"
 				str+="</li>"
 			}
@@ -143,12 +189,16 @@ $(document).ready(function(){
 	})//모달창 안에 댓글 쓰기
 	
 	//댓글 내용을 클릭하면(수정 및 삭제를 하기 위해서)
-	$("#relist").on("click", function(){
+	$("#relist").on("click","li", function(){//이벤트 델리게이션 : 범위 한정시키기 
 		
-		replyService.reDetail(4,function(detail){
+		//rno값을 가져오기
+		let rno=$(this).data("rno");//li가 하나만 있는 것이 아니라 여러개가 있다. 그래서 li를 작성하는 것이 아니라 내가 선택한 li에 있는 rno값 this를 작성한다.
+		
+		replyService.reDetail(rno,function(detail){
 			console.log(detail.reply)
 			console.log(detail.replyer)
 			
+			$("input[name='rno']").val(detail.rno)
 			$("input[name='replyer']").val(detail.replyer)
 			$("input[name='reply']").val(detail.reply)
 			
@@ -162,5 +212,41 @@ $(document).ready(function(){
 			$(".modal").modal("show");
 		})
 	})
+	
+	//댓글 수정버튼을 클릭하면
+	$("#modalModBtn").on("click",function(){
+		//alert("aa")
+		//var rno= $("input[name='rno'").val()
+		var reply={rno:$("input[name='rno']").val(),reply:$("input[name='reply']").val()}//선언한 곳이 json타입이기 때문에
+		console.log(reply)
+		//댓글 수정함수를 호출해서 처리(<-댓글 수정을 하기 위한 함수 선언)
+		replyService.reupdate(reply,function(update){// callback -> 익명함수
+			//callback영역 //update가 정상적으로 처리된 후 조치
+			alert("update 작업: "+update)
+			//modal창을 숨겨라
+			$(".modal").modal("hide");
+			
+			//목록리스트 를 실행
+			showList();	
+		})
+	})
+	
+	//댓글 삭제버튼을 클릭하면
+	$("#modalRemoveBtn").on("click",function(){
+//		alert("aa")
+		var reply={rno:$("input[name='rno']").val()}//선언한 곳이 json타입이기 때문에
+//		console.log(rno)
+		//댓글 삭제함수를 호출해서 처리(<-댓글 삭제을 하기 위한 함수 선언)
+		replyService.remove(reply,function(remove){// callback -> 익명함수
+			//callback영역 //delete가 정상적으로 처리된 후 조치
+			alert("delete 작업: "+remove)
+			//modal창을 숨겨라
+			$(".modal").modal("hide");
+			
+			//목록리스트 를 실행
+			showList();	
+		})
+	})
+	
 })//jquery끝
 
