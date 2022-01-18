@@ -4,14 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="org.iyb.mapper.BoardMapper">
+<!-- namespace : 어떤 것 과 연동시킬껀지 -->
 	<!-- sql 문장 : 세미콜론 지우고 복붙하기-->
-  	<insert id="write">
-  		  <!-- 추상메소드명 -->
-  		<!-- sql에서 확인 후 작성 -->
+	
+	<!-- insert문이 실행되고 생성된 pk값을 알아야 하는 경우 -->
+  	<!-- <insert id="writeKey">
+  		<selectKey keyProperty="content" order="BEFORE" resultType="String">
+  			select concat(date_format(sysdate(),'%Y%m%d'),'0000001')
+  		</selectKey>
   		insert into board(title,content,writer)
 		value(#{title},#{content},#{writer})
+  	</insert> -->
+  	
+  	<!-- insert만 처리되고 생성된 pk값을 알 필요가 없는 경우 -->
+		  <!-- 추상메소드명 -->
+  	<insert id="write"> <!-- id에는  BoardMapper의 각 각 메소드 이름을 주면 된다.-->
+  		<!-- sql에서 확인 후 작성 -->
+  		insert into board(title,content,writer)
+		value(#{title},#{content},#{writer})<!-- BoardDTO에 있는 것만 작성 -->
   	</insert>
-  	<select id="list" resultType="org.iyb.domain.BoardDTO"><!-- resultType: 어디에 저장해서 return할 것인지 -->
+
+  	<select id="list" resultType="org.iyb.domain.BoardDTO">
+  	<!-- resultType: 어디에 저장해서 return할 것인지 자바의 return이라 생각하면 됨-->
   	<!-- 데이터베이스 표 처럼 저장 됨. -->
   		select*from(
 				select @rownum:=@rownum+1 as rownum, b.*

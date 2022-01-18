@@ -51,8 +51,8 @@ public class BoardDTO{
 	public void setGood(int good) {
 		this.good = good;
 	}
-	@Override
-	public String toString() {
+	@Override//부모클래스에 있는 내용(매소드)을 자식이 변경하는 것
+	public String toString() {//toString() : 내가 원하는 결과를 보고싶을 때 toString 작성 안하면 주소가 나옴
 		return "BoardDTO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer
 				+ ", regdate=" + regdate + ", cnt=" + cnt + ", good=" + good + "]";
 	}
