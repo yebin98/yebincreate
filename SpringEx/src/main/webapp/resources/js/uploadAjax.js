@@ -49,6 +49,7 @@ $(document).ready(function(){
 			contentType:false,
 			success:function(result){
 				alert("upload성공")
+				console.log(result)
 			}
 		})
 	})

@@ -11,7 +11,7 @@
   		insert into board(title,content,writer)
 		value(#{title},#{content},#{writer})
   	</insert>
-  	<select id="list" resultType="org.iyb.domain.BoardDTO">
+  	<select id="list" resultType="org.iyb.domain.BoardDTO"><!-- resultType: 어디에 저장해서 return할 것인지 -->
   	<!-- 데이터베이스 표 처럼 저장 됨. -->
   		select*from(
 				select @rownum:=@rownum+1 as rownum, b.*
