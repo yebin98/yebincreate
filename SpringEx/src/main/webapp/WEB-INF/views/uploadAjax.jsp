@@ -13,5 +13,8 @@
         <input type="file" name="uploadFile" multiple>
     </div>
     <input type="submit" value="전송"><!-- submit : form태그의 action으로 가야 함 하지만 form태그가 없으므로 js로 처리해야 한다. -->
+   	<div id="uploadResult">
+   		<ul></ul>
+   	</div>
 </body>
 </html>

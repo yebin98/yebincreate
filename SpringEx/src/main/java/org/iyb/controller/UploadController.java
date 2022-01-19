@@ -10,10 +10,14 @@ import java.util.Date;
 import java.util.UUID;
 
 import org.iyb.domain.AttachFileDTO;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -166,5 +170,42 @@ public class UploadController {
 		}//for문 end
 		//통신상태가 정상적(HttpStatus.OK)이면 ArrayList(list)에 저장되어 있는 값을 웹브라우저(uploadAjax.js에 있는 ajax에 success)에 보내라
 		return new ResponseEntity<>(list,HttpStatus.OK);//list는 uploadAjax.js의 ajax에 result로 넘어간다.
+	}
+	//파일 업로드한 파일타입이 이미지일 때 웹브라우저에 이미지를 띄우기 위해
+	@GetMapping("display")
+	public ResponseEntity<byte[]> getFile(String fileName) {//getfile()은 문자열로 파일의 경로가 포함된 fileName을 매개변수 받고 byte[](이진수)를 전송
+		System.out.println("url주소를 통한 fuleName="+fileName);
+		
+		File file = new File("C:\\Users\\GreenArt\\upload\\"+fileName);
+		System.out.println("file="+file);
+		ResponseEntity<byte[]> result = null;
+		//byte[]로 이미지 파일의 데이터를 전송할 때 브라우저에 보내는 MIME타입이 파일의 종류(jpg, png, xls, ppt...)에 따라서 달라진다.
+		//이 부분을 해결하기 위해서 probeContentType()을 이용해서 MIME타입 데이터를 Http의 헤더 메세지에 포함할 수 있도록 처리
+		try {
+			HttpHeaders header = new HttpHeaders();
+			result=new ResponseEntity<>(FileCopyUtils.copyToByteArray(file),header,HttpStatus.OK);
+		} catch (IOException e) {// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	//파일 업로드한 파일타입이 이미지가 아닐때(.txt, .xls, .ppt) 웹브라우저를 통해서 download할 수 있도록 한다.
+	//consumes : 들어오는 데이터 타입 정의(생략가능) //produces : 반환하는 데이터 타입 정의(생략가능)//*생략을 하게 되면, 웹브라우저가 알아서 타입을 판단(내가 원하는 타입이 아닐 수도 있음)*
+	//웹브라우저가 '이 파일은 download해야 하는 파일입니다.' 라는 것을 인지할 수 있도록 반환이 되어야 한다. 그러기 위해서는 MediaType.APPLICATION_OCTET_STREAM_VALUE 타입으로 반환데이터 타입을 선언한다.
+	@GetMapping(value="download",produces=MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public ResponseEntity<Resource> downloadFile(String fileName){//Resource core로 import
+		System.out.println("download fileName="+fileName);
+		
+		Resource resource = new FileSystemResource("C:\\Users\\GreenArt\\upload\\"+fileName);
+		System.out.println("download resource="+resource);
+		
+		String resourceName = resource.getFilename();
+		HttpHeaders header = new HttpHeaders();
+		try {
+			header.add("Content-Disposition", "attachment; filename="+new String(resourceName.getBytes("UTF-8"),"ISO-8859-1"));
+		} catch (IOException e) {// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new ResponseEntity<Resource>(resource,header,HttpStatus.OK);
 	}
 }
