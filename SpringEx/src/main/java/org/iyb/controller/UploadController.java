@@ -174,7 +174,7 @@ public class UploadController {
 	//파일 업로드한 파일타입이 이미지일 때 웹브라우저에 이미지를 띄우기 위해
 	@GetMapping("display")
 	public ResponseEntity<byte[]> getFile(String fileName) {//getfile()은 문자열로 파일의 경로가 포함된 fileName을 매개변수 받고 byte[](이진수)를 전송
-		System.out.println("url주소를 통한 fuleName="+fileName);
+		System.out.println("url주소를 통한 fileName="+fileName);
 		
 		File file = new File("C:\\Users\\GreenArt\\upload\\"+fileName);
 		System.out.println("file="+file);

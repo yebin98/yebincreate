@@ -12,6 +12,9 @@ public interface BoardMapper {
 	//게시판 글쓰기와 관련되어있는 DB작업에 대한 설계
 	public void write(BoardDTO board);
 	
+	//게시판 파일와 관련되어있는 DB작업에 대한 설계
+	public void insertSelectKey(BoardDTO board);
+	
 	//게시판 목록리스트와 관련되어있는 DB작업에 대한 설계
 	public ArrayList<BoardDTO> list(Criteria cri);
 	//ArrayList : 길이가 값에 따라 변하는 배열

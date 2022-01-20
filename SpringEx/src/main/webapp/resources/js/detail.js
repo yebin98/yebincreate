@@ -1,4 +1,5 @@
 //jquery문법 밖에 작성하고 실행하는 것만 jquery에 작성한다.
+//함수는 jquery문법 밖에 작성하는 이유는 파일을 열 때 함수는 호출만 해도 상관없어 밖에 작성하며 메모리를 관리한다.만약 함수 부분도 jquery문법 안에 작성하면 메모리를 많이 사용하여 과부화가 걸린다.
 let replyService=(function(){//replyService 함수 선언
 	//댓글쓰기를 하기 위한 함수 선언
 	function add(reply,callback){//add인수가 2개이므로 매개변수도 2개이다.
@@ -25,11 +26,11 @@ let replyService=(function(){//replyService 함수 선언
 		console.log(bno);
 		//$.getJOSN(url+data) //특정 번호를 클릭하면 특정 번호의 댓글이 나올 수 있도록 bno데이터 값을 받아와야 한다.
 		$.getJSON(
-				"/replies/list/"+bno+".json", //url주소에 bno를 작성되어서 간다./replies/list/선택한bno
-				function(data){
-					if(callback)
-						callback(data);
-				})//success 
+			"/replies/list/"+bno+".json", //url주소에 bno를 작성되어서 간다./replies/list/선택한bno
+			function(data){
+				if(callback)
+					callback(data);
+			})//success 
 	}
 	
 	//댓글 수정을 하기 위해 댓글 내용 가져오는 함수 선언
@@ -81,7 +82,6 @@ let replyService=(function(){//replyService 함수 선언
 		})
 	}
 	
-	
 	//return {name:"AAAA"};
 	return {//메모리 관리를 위해서 작성
 		add:add,//add라는 함수를 add변수에 담아 움직이겠다.
@@ -94,14 +94,42 @@ let replyService=(function(){//replyService 함수 선언
 
 //=======================================================================================================
 
-$(document).ready(function(){
+$(document).ready(function(){ //선택자.이벤트
+	//bno값
+	let bno = $("#bno").html();//시작하자마자 들고와야함
+	//console.log(bno)
+	
+	//상세페이지가 시작되자마자 이미지를 출력하기위한 ajax
+	$.getJSON("/board/fileList/"+bno+".json",
+		function(data){//BoardController에 있는 fileList를 통해 얻어진 select결과를 data에 저장한 후,
+			var str="";
+			//detail.jsp에 뿌리기
+			$(data).each(function(i,obj){
+				console.log(data)
+				if(!obj.image){
+					var fileCallPath = encodeURIComponent(obj.uploadPath+"/"+obj.uuid+"_"+obj.fileName);
+					str+="<li data-path='"+obj.uploadPath+"'";
+					str+="data-uuid='"+obj.uuid+"'data-filename='"+obj.fileName+"'data-type='"+obj.image+"'>"; 
+					str+="<a href='/download?fileName="+fileCallPath+"'>"+obj.fileName+"</a></li>"
+				}else{
+					var fileCallPath = encodeURIComponent(obj.uploadPath+"/s_"+obj.uuid+"_"+obj.fileName);//\ 표시를 /로 바꿔줌
+					console.log(fileCallPath)
+					//img태그를 사용해서 웹브라우저 이미지 출력
+					//str+="<li>"+"이미지파일"+"</li>"
+					str+="<li data-path='"+obj.uploadPath+"'";
+					str+="data-uuid='"+obj.uuid+"'data-filename='"+obj.fileName+"'data-type='"+obj.image+"'>"; 
+					str+="<img src='/display?fileName="+fileCallPath+"'></li>"
+				}
+			})
+			$("#uploadResult ul").html(str)
+		})
+		
 //	// 상세페이지가 실행되면 댓글 글쓰기 버튼 활성화
 //	$("#modalRegisterBtn").show();
 //	// 상세페이지가 실행되면 댓글 수정 버튼 활성화
 //	$("#modalModBtn").show();
 //	// 상세페이지가 실행되면 댓글 삭제 버튼 활성화
 //	$("#modalRemoveBtn").show();
-
 	
 	// 댓글쓰기 버튼을 클릭하면
 	$("#addReplyBtn").on("click",function(){
@@ -120,9 +148,6 @@ $(document).ready(function(){
 		//댓글 삭제 버튼 비활성화
 		$("#modalRemoveBtn").hide();
 	});
-	//bno값
-	let bno = $("#bno").html();//시작하자마자 들고와야함
-	//console.log(bno)
 	
 	showList();//호출부 detail.jsp가 실행되자마자 댓글목록리스트가 실행되어야 한다.
 	

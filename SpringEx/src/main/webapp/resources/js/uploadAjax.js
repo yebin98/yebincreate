@@ -37,12 +37,13 @@ $(document).ready(function(){
 			 * <span data-age="13">
 			 * $("span").data("age") => 13 data함수 괄호안에 매개변수가 두개면 getter
 			 * */
-			str+="<input type='text' name='attachList["+i+"].fileName' value='"+$(obj).data("filename")+"'>"
-			str+="<input type='text' name='attachList["+i+"].uuid' value='"+$(obj).data("uuid")+"'>"
-			str+="<input type='text' name='attachList["+i+"].uploadPath' value='"+$(obj).data("path")+"'>"
-			str+="<input type='text' name='attachList["+i+"].image' value='"+$(obj).data("type")+"'>"
+			str+="<input type='hidden' name='attachList["+i+"].fileName' value='"+$(obj).data("filename")+"'>"
+			str+="<input type='hidden' name='attachList["+i+"].uuid' value='"+$(obj).data("uuid")+"'>"
+			str+="<input type='hidden' name='attachList["+i+"].uploadPath' value='"+$(obj).data("path")+"'>"
+			str+="<input type='hidden' name='attachList["+i+"].image' value='"+$(obj).data("type")+"'>"
 		})
-		formObj.append(str);
+		formObj.append(str).submit();// append : insert append를 통해서 jsp의 제목작성란, 내용작성란(board/write)과 위의 내용이 합처졌다.
+		//html : 덮어쓰기
 	})
 	//파일 선택의 내용이 변경되면
 	$("input[type='file']").on("change", function(e){
@@ -61,7 +62,7 @@ $(document).ready(function(){
 				//밑에 있는거 하지 마라
 				return false;
 			}
-			formData.append("uploadFile",files[i]);//append: 데이터를  뒤에서 부터 차례로 배열로 저장(뒤에 차례로 누적)
+			formData.append("uploadFile",files[i]);//append: 데이터를  뒤에서 부터 차례로 배열로 저장(뒤에 차례로 누적) 
 		}
 		
 		//ajax를 이용해서 컨트롤러 연결
@@ -94,7 +95,7 @@ function showUploadedFile(uploadresultArr){
 			var fileCallPath = encodeURIComponent(obj.uploadPath+"/"+obj.uuid+"_"+obj.fileName);
 			str+="<li data-path='"+obj.uploadPath+"'";
 			str+="data-uuid='"+obj.uuid+"'data-filename='"+obj.fileName+"'data-type='"+obj.image+"'>"; 
-			str+="<a href='download?fileName="+fileCallPath+"'>"+obj.fileName+"</a></li>"
+			str+="<a href='/download?fileName="+fileCallPath+"'>"+obj.fileName+"</a></li>"
 		}else{//사용자가 업로드한 파일의 타입이 이미지이면(.jpg .png .gif)
 			var fileCallPath = encodeURIComponent(obj.uploadPath+"/s_"+obj.uuid+"_"+obj.fileName);//\ 표시를 /로 바꿔줌
 			console.log(fileCallPath)
