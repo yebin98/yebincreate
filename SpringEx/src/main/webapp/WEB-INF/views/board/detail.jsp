@@ -24,6 +24,7 @@
 	<script type="text/javascript" src="../resources/js/sb-admin-2.js"></script>
 </head>
 <body>
+${login}
 	<div class="form-group row">
 		<div id="bno" class="col-sm-12 mb-3 mb-sm-0">${detail.bno}</div> <!-- BoardMapper의sql문장의 id값이 detail인 bno -->
 	    <!-- 위에식은 아래처럼 탭키를 눌러서 하면  detail.js에 탭을 누른 값도 포함하여서 탭을 누르지말고 일자로 작성해야 한다. -->

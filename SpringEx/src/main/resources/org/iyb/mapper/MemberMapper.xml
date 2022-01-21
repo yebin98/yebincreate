@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="org.iyb.mapper.MemberMapper"><!-- 인터페이스MemberMapper와 연결 -->
+	<insert id="insert"><!-- 추상메서드 이름 = id -->
+		insert into member values(#{id},#{password},#{name})<!-- MemberDTO와 같아야 한다. -->
+	</insert>
+	<select id="login" resultType="org.iyb.domain.MemberDTO"> <!-- resultType:select된 결과를 어디에 저장할 것인지 -->
+		select*from member where id=#{id} and password=#{password}
+	</select>
+</mapper>

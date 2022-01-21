@@ -17,6 +17,12 @@
 </head>
 <body>
 	<h1>게시판 목록 리스트</h1>
+	<%-- ${login}<!-- 세션 정보를 가지고 옴 --> --%>
+	<c:if test="${login!=null}">
+		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+			<a href="/board/write" class="btn btn-primary">글쓰기</a>
+		</div>
+	</c:if>
 	<div class="card-body">
 	    <div class="table-responsive">
 	        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
